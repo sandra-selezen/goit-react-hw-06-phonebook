@@ -1,3 +1,6 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts, add, remove } from 'redux/contactsSlice';
+
 export const App = () => {
   return (
     <div
