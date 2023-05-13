@@ -9,7 +9,7 @@ const contactsSlice = createSlice({
     filter: "",
   },
   reducers: {
-    add: {
+    addContact: {
       reducer(state, action) {
         return [...state, action.payload];
       },
@@ -22,7 +22,7 @@ const contactsSlice = createSlice({
         }
       }
     },
-    remove: {
+    deleteContact: {
       reducer(state, action) {
         return state.filter(({ id }) => id !== action.payload);
       }
@@ -37,7 +37,7 @@ const persistConfig = {
   storage,
 };
 
-export const { add, remove } = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 export const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);
 
 // Selectors

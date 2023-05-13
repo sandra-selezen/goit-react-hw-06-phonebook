@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from "redux/contactsSlice";
 import { RiUserUnfollowFill } from 'react-icons/ri';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = ({ contacts }) => {
+  const dispatch = useDispatch();
+
+  const onDeleteContact = (contactId) => {
+    dispatch(deleteContact(contactId));
+  }
   return (
     <ul>
       {contacts.map(contact => (

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
       }}
     >
       <ContactForm />
+      {contacts.length > 0 && <ContactList />}
     </div>
   );
 };

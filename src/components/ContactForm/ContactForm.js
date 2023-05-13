@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { nanoid } from "@reduxjs/toolkit";
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -26,6 +26,9 @@ const initialValues = {
 
 
 export const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [id, setId] = useState(nanoid());
 
   return (
     <></>
