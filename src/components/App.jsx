@@ -1,7 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, add, remove } from 'redux/contactsSlice';
+import { useSelector } from 'react-redux';
+import { getContacts } from 'redux/contactsSlice';
+import { ContactForm } from './ContactForm/ContactForm';
 
 export const App = () => {
+
+  const contacts = useSelector(getContacts);
+
   return (
     <div
       style={{
@@ -13,7 +17,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+      <ContactForm />
     </div>
   );
 };
