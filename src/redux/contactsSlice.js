@@ -14,8 +14,10 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addContact: {
-      reducer: ({ items }, { payload }) => {
-        items.push(payload); 
+      reducer: (state, action) => {
+        state.items = [...state.items, action.payload];
+        // return [...state.items, action.payload];
+        // state.items.push(action.payload); 
         // return [...state, payload]; in this case it is does not work
       },
       prepare: data => {
@@ -27,12 +29,10 @@ const contactsSlice = createSlice({
         }
       }
     },
-    deleteContact: {
-      reducer: ({ items }, { payload }) => {
-        items.filter(({id}) => id !== payload); // works but app is crashes 
-      }
+    deleteContact: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
     },
-  }
+  },
 });
 
 const contactsReducer = contactsSlice.reducer;
