@@ -29,21 +29,23 @@ export const ContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  const isReplicated = ({ name }) => {
-    const normalizedContactName = name.toLowerCase();
+  const isReplicated = ({ name, number }) => {
+    const normalizedContactName = name.toLowerCase().trim();
+    const normalizedContactNumber = number.trim();
     const replicatedContactName = contacts.find(item => {
-      return (item.name.toLowerCase() === normalizedContactName)
+      return (item.name.toLowerCase().trim() === normalizedContactName && item.number.trim() === normalizedContactNumber)
     });
+
+    // || item.number.trim() === normalizedContactNumber
 
     return Boolean(replicatedContactName);
   }
 
   const onAddContact = ({ name, number }) => {
     // need to add check
-    isReplicated({ name })
+    isReplicated({ name, number })
       ? toast('This contact is already in your Phonebook!', { icon: '👻', })
       : dispatch(addContact({ name, number }));
-    // dispatch(addContact({ name, number }));
   };
 
   const handleFilter = (event) => {
