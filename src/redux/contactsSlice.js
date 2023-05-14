@@ -29,8 +29,8 @@ const contactsSlice = createSlice({
       }
     },
     deleteContact: {
-      reducer: (state, { payload }) => {
-        return state.filter(({ id }) => id !== payload);
+      reducer: ({ items }, { payload }) => {
+        return items.filter((item) => item.id !== payload); // works but app is crashes 
       }
     },
     setFilter: {
