@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -72,4 +73,8 @@ export const ContactForm = () => {
       </Form>
     </Formik>
   )
+}
+
+FormError.propTypes = {
+  name: PropTypes.string,
 }

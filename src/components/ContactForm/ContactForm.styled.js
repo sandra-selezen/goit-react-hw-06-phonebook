@@ -7,7 +7,7 @@ export const Form = styled(FormikForm)`
 
 export const ErrorText = styled.p`
   color: red;
-  margin-top: 8px;
+  margin-top: 4px;
 `;
 
 export const FormLabel = styled.label`
