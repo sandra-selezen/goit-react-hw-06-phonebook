@@ -14,6 +14,7 @@ export const Filter = () => {
 
   return (
     <>
+      <p>Find contact by name</p>
       {/* <Title><RiUserSearchFill /> Find contact by name </Title> */}
       <input value={filter} onChange={handleFilter} autoComplete="off" />
     </>

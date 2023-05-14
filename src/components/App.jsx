@@ -9,21 +9,22 @@ export const App = () => {
 
   const contacts = useSelector(getContacts);
   console.log(contacts);
-  
+
   return (
     <div
       style={{
-        height: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
+        fontSize: 20,
         color: '#010101'
       }}
     >
       <ContactForm />
       <Filter />
-      {contacts.length > 0 && <ContactList />}
+      <ContactList />
+      {/* {contacts.length > 0 && <ContactList />} */}
       <Toaster position="top-center" />
     </div>
   );

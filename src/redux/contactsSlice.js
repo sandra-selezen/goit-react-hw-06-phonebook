@@ -15,7 +15,6 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer: ({ contacts }, { payload }) => {
-        // return [...contacts, payload];
         contacts.push(payload); 
         // return [...state, payload]; in this case it is does not work
       },
@@ -30,7 +29,7 @@ const contactsSlice = createSlice({
     },
     deleteContact: {
       reducer: ({ contacts }, { payload }) => {
-        return contacts.filter(({id}) => id !== payload); // works but app is crashes 
+        contacts.filter(({id}) => id !== payload); // works but app is crashes 
       }
     },
   }
