@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import toast from 'react-hot-toast';
 import { RiPhoneFill, RiUserFill, RiUserAddFill } from "react-icons/ri";
-import { getContacts } from 'redux/contactsSlice';
+import { getContacts, addContact, setFilter } from 'redux/contactsSlice';
 import { Form, ErrorText, FormBox, FormLabel, FormButton } from './ContactForm.styled';
 
 const FormError = ({ name }) => {
@@ -28,10 +29,26 @@ export const ContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
+  const isReplicated = ({ name }) => {
+    const normalizedContactName = name.toLowerCase();
+    const replicatedContactName = contacts.find(item => {
+      return (item.name.toLowerCase() === normalizedContactName)
+    });
+
+    return Boolean(replicatedContactName);
+  }
+
   const onAddContact = ({ name, number }) => {
     // need to add check
+    isReplicated({ name })
+      ? toast('This contact is already in your Phonebook!', { icon: '👻', })
+      : dispatch(addContact({ name, number }));
     // dispatch(addContact({ name, number }));
-  }
+  };
+
+  const handleFilter = (event) => {
+    dispatch(setFilter(event.target.value));
+  };
 
   return (
     <Formik

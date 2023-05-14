@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
@@ -6,7 +7,7 @@ import { ContactList } from './ContactList/ContactList';
 export const App = () => {
 
   const contacts = useSelector(getContacts);
-
+  console.log(contacts)
   return (
     <div
       style={{
@@ -19,7 +20,8 @@ export const App = () => {
       }}
     >
       <ContactForm />
-      {contacts.length > 0 && <ContactList />}
+      {contacts.length > 0 && <ContactList contacts={contacts} />}
+      <Toaster position="top-center" />
     </div>
   );
 };
