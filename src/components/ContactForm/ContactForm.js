@@ -36,8 +36,6 @@ export const ContactForm = () => {
       return (item.name.toLowerCase().trim() === normalizedContactName && item.number.trim() === normalizedContactNumber)
     });
 
-    // || item.number.trim() === normalizedContactNumber
-
     return Boolean(replicatedContactName);
   }
 
