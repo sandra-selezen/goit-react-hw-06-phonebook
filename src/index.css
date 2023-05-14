@@ -17,5 +17,8 @@ code {
 button {
   cursor: pointer;
   outline: none;
-  
+}
+
+input {
+  width: 100%;
 }
