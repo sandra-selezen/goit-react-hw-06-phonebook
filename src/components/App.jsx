@@ -4,28 +4,19 @@ import { getContacts } from 'redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Container } from './Layout/Layout.styled';
 
 export const App = () => {
 
   const contacts = useSelector(getContacts);
-  console.log(contacts);
+  // console.log(contacts);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 20,
-        color: '#010101'
-      }}
-    >
+    <Container>
       <ContactForm />
       <Filter />
-      <ContactList />
-      {/* {contacts.length > 0 && <ContactList />} */}
+      {contacts.length > 0 && <ContactList />}
       <Toaster position="top-center" />
-    </div>
+    </Container>
   );
 };
