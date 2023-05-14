@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/contactsSlice';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export const App = () => {
 
   const contacts = useSelector(getContacts);
-  console.log(contacts)
+  console.log(contacts);
+  
   return (
     <div
       style={{
@@ -20,8 +22,8 @@ export const App = () => {
       }}
     >
       <ContactForm />
-      {/* <ContactList contacts={contacts} /> */}
-      {contacts.length > 0 && <ContactList contacts={contacts} />}
+      <Filter />
+      {contacts.length > 0 && <ContactList />}
       <Toaster position="top-center" />
     </div>
   );

@@ -1,17 +1,23 @@
 import PropTypes from "prop-types";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, deleteContact } from "redux/contactsSlice";
+import { getFilter } from "redux/filterSlice";
 import { RiUserUnfollowFill } from 'react-icons/ri';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+  const displayContactlist = filteredContacts === "" ? contacts : filteredContacts;
 
   const onDeleteContact = (contactId) => {
     dispatch(deleteContact(contactId));
   }
   return (
     <ul>
-      {contacts.map(contact => (
+      {displayContactlist.map(contact => (
         <li key={contact.id}>
           <div>
             <span>{contact.name}:</span> <span>{contact.number}</span>
