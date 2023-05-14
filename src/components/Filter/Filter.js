@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { RiUserSearchFill } from "react-icons/ri";
+// import { RiUserSearchFill } from "react-icons/ri";
 import { getFilter, setFilter } from 'redux/filterSlice';
 // import { Title } from './Filter.styled';
 
