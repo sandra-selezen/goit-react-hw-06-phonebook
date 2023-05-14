@@ -15,10 +15,11 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addContact: {
-      reducer(state, action) {
-        return [...state, action.payload];
+      reducer: ({ items }, { payload }) => {
+        items.push(payload); 
+        // return [...items, payload]; in this case it is does not work
       },
-      prepare(data) {
+      prepare: data => {
         return {
           payload: {
             id: nanoid(),
@@ -28,8 +29,8 @@ const contactsSlice = createSlice({
       }
     },
     deleteContact: {
-      reducer(state, action) {
-        return state.filter(({ id }) => id !== action.payload);
+      reducer: (state, { payload }) => {
+        return state.filter(({ id }) => id !== payload);
       }
     },
     setFilter: {

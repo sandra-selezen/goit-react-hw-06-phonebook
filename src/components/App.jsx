@@ -20,6 +20,7 @@ export const App = () => {
       }}
     >
       <ContactForm />
+      {/* <ContactList contacts={contacts} /> */}
       {contacts.length > 0 && <ContactList contacts={contacts} />}
       <Toaster position="top-center" />
     </div>
