@@ -5,7 +5,7 @@ import { persistReducer } from 'redux-persist';
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: {
-    contacts: [
+    items: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
@@ -14,8 +14,8 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addContact: {
-      reducer: ({ contacts }, { payload }) => {
-        contacts.push(payload); 
+      reducer: ({ items }, { payload }) => {
+        items.push(payload); 
         // return [...state, payload]; in this case it is does not work
       },
       prepare: data => {
@@ -28,8 +28,8 @@ const contactsSlice = createSlice({
       }
     },
     deleteContact: {
-      reducer: ({ contacts }, { payload }) => {
-        contacts.filter(({id}) => id !== payload); // works but app is crashes 
+      reducer: ({ items }, { payload }) => {
+        items.filter(({id}) => id !== payload); // works but app is crashes 
       }
     },
   }
@@ -47,4 +47,4 @@ export const persistedContactsReducer = persistReducer(persistConfig, contactsRe
 
 // Selectors
 
-export const getContacts = state => state.contacts.contacts;
+export const getContacts = state => state.contacts.items;
